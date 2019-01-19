@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a469974b-38bf-42e6-a1ec-0e23de29ebef" name="Default Changelist" comment="" />
+    <list default="true" id="a469974b-38bf-42e6-a1ec-0e23de29ebef" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pca.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pca.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -9,115 +12,147 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/data_description.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/train.csv">
-          <provider editor-type-id="csv-text-editor" />
-          <provider selected="true" editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" rowLines="3">
-              <column index="0" width="100" />
-              <column index="1" width="100" />
-              <column index="2" width="100" />
-              <column index="3" width="100" />
-              <column index="4" width="100" />
-              <column index="5" width="100" />
-              <column index="6" width="100" />
-              <column index="7" width="100" />
-              <column index="8" width="100" />
-              <column index="9" width="100" />
-              <column index="10" width="100" />
-              <column index="11" width="100" />
-              <column index="12" width="100" />
-              <column index="13" width="100" />
-              <column index="14" width="100" />
-              <column index="15" width="100" />
-              <column index="16" width="100" />
-              <column index="17" width="100" />
-              <column index="18" width="100" />
-              <column index="19" width="100" />
-              <column index="20" width="100" />
-              <column index="21" width="100" />
-              <column index="22" width="100" />
-              <column index="23" width="100" />
-              <column index="24" width="100" />
-              <column index="25" width="100" />
-              <column index="26" width="100" />
-              <column index="27" width="100" />
-              <column index="28" width="100" />
-              <column index="29" width="100" />
-              <column index="30" width="100" />
-              <column index="31" width="100" />
-              <column index="32" width="100" />
-              <column index="33" width="100" />
-              <column index="34" width="100" />
-              <column index="35" width="100" />
-              <column index="36" width="100" />
-              <column index="37" width="100" />
-              <column index="38" width="100" />
-              <column index="39" width="100" />
-              <column index="40" width="100" />
-              <column index="41" width="100" />
-              <column index="42" width="100" />
-              <column index="43" width="100" />
-              <column index="44" width="100" />
-              <column index="45" width="100" />
-              <column index="46" width="100" />
-              <column index="47" width="100" />
-              <column index="48" width="100" />
-              <column index="49" width="100" />
-              <column index="50" width="100" />
-              <column index="51" width="100" />
-              <column index="52" width="100" />
-              <column index="53" width="100" />
-              <column index="54" width="100" />
-              <column index="55" width="100" />
-              <column index="56" width="100" />
-              <column index="57" width="100" />
-              <column index="58" width="100" />
-              <column index="59" width="100" />
-              <column index="60" width="100" />
-              <column index="61" width="100" />
-              <column index="62" width="100" />
-              <column index="63" width="100" />
-              <column index="64" width="100" />
-              <column index="65" width="100" />
-              <column index="66" width="100" />
-              <column index="67" width="100" />
-              <column index="68" width="100" />
-              <column index="69" width="100" />
-              <column index="70" width="100" />
-              <column index="71" width="100" />
-              <column index="72" width="100" />
-              <column index="73" width="100" />
-              <column index="74" width="100" />
-              <column index="75" width="100" />
-              <column index="76" width="100" />
-              <column index="77" width="100" />
-              <column index="78" width="100" />
-              <column index="79" width="100" />
-              <column index="80" width="100" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pca.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="283" column="24" selection-start-line="283" selection-start-column="19" selection-end-line="283" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.81499594">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/data_description.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="3630">
+                  <caret line="477" column="19" selection-start-line="477" selection-start-column="15" selection-end-line="477" selection-end-column="19" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/train.csv">
+              <provider editor-type-id="csv-text-editor" />
+              <provider selected="true" editor-type-id="csv-table-editor">
+                <state showInfoPanel="true" rowLines="1">
+                  <column index="0" width="100" />
+                  <column index="1" width="100" />
+                  <column index="2" width="100" />
+                  <column index="3" width="100" />
+                  <column index="4" width="100" />
+                  <column index="5" width="100" />
+                  <column index="6" width="100" />
+                  <column index="7" width="100" />
+                  <column index="8" width="100" />
+                  <column index="9" width="100" />
+                  <column index="10" width="100" />
+                  <column index="11" width="100" />
+                  <column index="12" width="100" />
+                  <column index="13" width="100" />
+                  <column index="14" width="100" />
+                  <column index="15" width="100" />
+                  <column index="16" width="100" />
+                  <column index="17" width="100" />
+                  <column index="18" width="100" />
+                  <column index="19" width="100" />
+                  <column index="20" width="100" />
+                  <column index="21" width="100" />
+                  <column index="22" width="100" />
+                  <column index="23" width="100" />
+                  <column index="24" width="100" />
+                  <column index="25" width="100" />
+                  <column index="26" width="100" />
+                  <column index="27" width="100" />
+                  <column index="28" width="100" />
+                  <column index="29" width="100" />
+                  <column index="30" width="100" />
+                  <column index="31" width="100" />
+                  <column index="32" width="100" />
+                  <column index="33" width="100" />
+                  <column index="34" width="100" />
+                  <column index="35" width="100" />
+                  <column index="36" width="100" />
+                  <column index="37" width="100" />
+                  <column index="38" width="100" />
+                  <column index="39" width="100" />
+                  <column index="40" width="100" />
+                  <column index="41" width="100" />
+                  <column index="42" width="100" />
+                  <column index="43" width="100" />
+                  <column index="44" width="100" />
+                  <column index="45" width="100" />
+                  <column index="46" width="100" />
+                  <column index="47" width="100" />
+                  <column index="48" width="100" />
+                  <column index="49" width="100" />
+                  <column index="50" width="100" />
+                  <column index="51" width="100" />
+                  <column index="52" width="100" />
+                  <column index="53" width="100" />
+                  <column index="54" width="100" />
+                  <column index="55" width="100" />
+                  <column index="56" width="100" />
+                  <column index="57" width="100" />
+                  <column index="58" width="100" />
+                  <column index="59" width="100" />
+                  <column index="60" width="100" />
+                  <column index="61" width="100" />
+                  <column index="62" width="100" />
+                  <column index="63" width="100" />
+                  <column index="64" width="100" />
+                  <column index="65" width="100" />
+                  <column index="66" width="100" />
+                  <column index="67" width="100" />
+                  <column index="68" width="100" />
+                  <column index="69" width="100" />
+                  <column index="70" width="100" />
+                  <column index="71" width="100" />
+                  <column index="72" width="100" />
+                  <column index="73" width="100" />
+                  <column index="74" width="100" />
+                  <column index="75" width="100" />
+                  <column index="76" width="100" />
+                  <column index="77" width="100" />
+                  <column index="78" width="100" />
+                  <column index="79" width="100" />
+                  <column index="80" width="100" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/pca.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="387">
+                  <caret line="272" lean-forward="true" selection-start-line="272" selection-end-line="272" />
+                  <folding>
+                    <element signature="e#4802#4821#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/data_description.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="450">
+                  <caret line="30" column="24" selection-start-line="30" selection-end-line="31" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>NA</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>nan</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -126,16 +161,16 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="width" value="954" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1920" />
     <option name="height" value="1200" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -157,6 +192,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -247,12 +283,13 @@
       <workItem from="1547201101838" duration="975000" />
       <workItem from="1547202086016" duration="4316000" />
       <workItem from="1547210081002" duration="1131000" />
-      <workItem from="1547575920957" duration="1301000" />
+      <workItem from="1547575920957" duration="7456000" />
+      <workItem from="1547739805960" duration="1743000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7723000" />
+    <option name="totallyTimeSpent" value="15621000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -264,9 +301,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1200" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1687966" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17039403" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -281,11 +319,11 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5005325" side_tool="true" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32920355" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" sideWeight="0.49946752" visible="true" weight="0.4" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49946752" visible="true" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.29286474" />
+      <window_info active="true" anchor="right" id="SciView" order="3" visible="true" weight="0.29818955" />
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="right" id="R Packages" order="5" />
       <window_info anchor="right" x="0" y="0" width="810" height="1240" id="Documentation" order="6" side_tool="true" weight="0.32989994" />
@@ -296,13 +334,97 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/data_description.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/resources/test.csv">
+      <provider selected="true" editor-type-id="csv-text-editor" />
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3">
+          <column index="0" width="100" />
+          <column index="1" width="100" />
+          <column index="2" width="100" />
+          <column index="3" width="100" />
+          <column index="4" width="100" />
+          <column index="5" width="100" />
+          <column index="6" width="100" />
+          <column index="7" width="100" />
+          <column index="8" width="100" />
+          <column index="9" width="100" />
+          <column index="10" width="100" />
+          <column index="11" width="100" />
+          <column index="12" width="100" />
+          <column index="13" width="100" />
+          <column index="14" width="100" />
+          <column index="15" width="100" />
+          <column index="16" width="100" />
+          <column index="17" width="100" />
+          <column index="18" width="100" />
+          <column index="19" width="100" />
+          <column index="20" width="100" />
+          <column index="21" width="100" />
+          <column index="22" width="100" />
+          <column index="23" width="100" />
+          <column index="24" width="100" />
+          <column index="25" width="100" />
+          <column index="26" width="100" />
+          <column index="27" width="100" />
+          <column index="28" width="100" />
+          <column index="29" width="100" />
+          <column index="30" width="100" />
+          <column index="31" width="100" />
+          <column index="32" width="100" />
+          <column index="33" width="100" />
+          <column index="34" width="100" />
+          <column index="35" width="100" />
+          <column index="36" width="100" />
+          <column index="37" width="100" />
+          <column index="38" width="100" />
+          <column index="39" width="100" />
+          <column index="40" width="100" />
+          <column index="41" width="100" />
+          <column index="42" width="100" />
+          <column index="43" width="100" />
+          <column index="44" width="100" />
+          <column index="45" width="100" />
+          <column index="46" width="100" />
+          <column index="47" width="100" />
+          <column index="48" width="100" />
+          <column index="49" width="100" />
+          <column index="50" width="100" />
+          <column index="51" width="100" />
+          <column index="52" width="100" />
+          <column index="53" width="100" />
+          <column index="54" width="100" />
+          <column index="55" width="100" />
+          <column index="56" width="100" />
+          <column index="57" width="100" />
+          <column index="58" width="100" />
+          <column index="59" width="100" />
+          <column index="60" width="100" />
+          <column index="61" width="100" />
+          <column index="62" width="100" />
+          <column index="63" width="100" />
+          <column index="64" width="100" />
+          <column index="65" width="100" />
+          <column index="66" width="100" />
+          <column index="67" width="100" />
+          <column index="68" width="100" />
+          <column index="69" width="100" />
+          <column index="70" width="100" />
+          <column index="71" width="100" />
+          <column index="72" width="100" />
+          <column index="73" width="100" />
+          <column index="74" width="100" />
+          <column index="75" width="100" />
+          <column index="76" width="100" />
+          <column index="77" width="100" />
+          <column index="78" width="100" />
+          <column index="79" width="100" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/train.csv">
       <provider editor-type-id="csv-text-editor" />
       <provider selected="true" editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" rowLines="3">
+        <state showInfoPanel="true" rowLines="1">
           <column index="0" width="100" />
           <column index="1" width="100" />
           <column index="2" width="100" />
@@ -387,12 +509,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/data_description.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3630">
+          <caret line="477" column="19" selection-start-line="477" selection-start-column="15" selection-end-line="477" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pca.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="283" column="24" selection-start-line="283" selection-start-column="19" selection-end-line="283" selection-end-column="24" />
+        <state relative-caret-position="387">
+          <caret line="272" lean-forward="true" selection-start-line="272" selection-end-line="272" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#4802#4821#0" expanded="true" />
           </folding>
         </state>
       </provider>
