@@ -263,6 +263,8 @@ labelEncoder = LabelEncoder()
 for val in categorical:
     df_x[val] = labelEncoder.fit_transform(df_x[val])
 
+df_x = pd.get_dummies(df_x, columns=categorical)
+
 #TODO create dummies
 #TODO dummytrap vermeiden
 #TODO Outliars eliminieren
@@ -292,11 +294,11 @@ from keras.layers import Dense
 # TODO check wieviele units per layer und welche Aktivierungsfunktion
 def build_classifier():
     c = Sequential()
-    c.add(Dense(units=480, kernel_initializer='uniform', activation='tanh', input_dim=4))
-    c.add(Dense(units=480, kernel_initializer='uniform', activation='tanh'))
-    c.add(Dense(units=10, kernel_initializer='uniform', activation='relu'))
-    c.add(Dense(units=1, kernel_initializer='uniform', activation='elu'))
-    c.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    c.add(Dense(units=100, activation='tanh', input_dim=train_x.shape[1]))
+    c.add(Dense(units=50, activation='tanh'))
+    c.add(Dense(units=20, activation='tanh'))
+    c.add(Dense(units=1, activation='relu'))
+    c.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
     return c
 
 
