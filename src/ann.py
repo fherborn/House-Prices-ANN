@@ -1,325 +1,244 @@
-# Test with a simple computation
-import tensorflow as tf
-from tensorflow.python.client import device_lib
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+from sklearn.preprocessing import StandardScaler # Used for scaling of data
+from sklearn.model_selection import train_test_split
+from keras.models import Sequential
+from keras.layers import Dense, Dropout
+from keras import metrics
+import matplotlib.pyplot as plt
+from keras import backend as K
+from keras.wrappers.scikit_learn import KerasRegressor
 import os
-import tensorflow as tf
 
-import itertools
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
+
+
+
+
 
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from pylab import rcParams
-import matplotlib
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import RobustScaler
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+from sklearn_pandas import DataFrameMapper
 
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.ensemble import IsolationForest
-import warnings
-from sklearn.ensemble import IsolationForest
-
-
-
-
-
-
-
-
-
-
-
-# Import and split
 train = pd.read_csv('../resources/train.csv')
-train.drop('Id',axis = 1, inplace = True)
-train_numerical = train.select_dtypes(exclude=['object'])
-train_numerical.fillna(0,inplace = True)
-train_categoric = train.select_dtypes(include=['object'])
-train_categoric.fillna('NONE',inplace = True)
-train = train_numerical.merge(train_categoric, left_index = True, right_index = True) 
+test_x = pd.read_csv('../resources/test.csv')
+
+train_y = train['SalePrice']
+train_x = train.drop(['SalePrice'],axis=1,inplace=False)
+test_id_col = test_x['Id'].values.tolist()
+
+df_x = pd.concat([train_x, test_x])
+
+missing_values_bound = 0.80
+
+total = df_x.isnull().sum().sort_values(ascending=False)
 
-test = pd.read_csv('../resources/test.csv')
-ID = test.Id
-test.drop('Id',axis = 1, inplace = True)
-test_numerical = test.select_dtypes(exclude=['object'])
-test_numerical.fillna(0,inplace = True)
-test_categoric = test.select_dtypes(include=['object'])
-test_categoric.fillna('NONE',inplace = True)
-test = test_numerical.merge(test_categoric, left_index = True, right_index = True)
+percent = (df_x.isnull().sum()/df_x.isnull().count()).sort_values(ascending=False)
 
+missing_data = pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
 
+df_x = df_x.drop((missing_data[missing_data['Percent'] > missing_values_bound]).index,1)
 
+df_x = df_x.drop("Id", 1)
+df_x[df_x.FireplaceQu != df_x.FireplaceQu].Fireplaces.unique()
+df_x['FireplaceQu']=train['FireplaceQu'].fillna('NF')
+df_x['GarageType'].isnull().sum()
+df_x['GarageCond'].isnull().sum()
+df_x['GarageFinish'].isnull().sum()
+df_x['GarageYrBlt'].isnull().sum()
+df_x['GarageQual'].isnull().sum()
 
+df_x['GarageType']=df_x['GarageType'].fillna('NG')
+df_x['GarageCond']=df_x['GarageCond'].fillna('NG')
+df_x['GarageFinish']=df_x['GarageFinish'].fillna('NG')
+df_x['GarageYrBlt']=df_x['GarageYrBlt'].fillna('NG')
+df_x['GarageQual']=df_x['GarageQual'].fillna('NG')
+df_x['BsmtExposure']=df_x['BsmtExposure'].fillna('NB')
+df_x['BsmtFinType2']=df_x['BsmtFinType2'].fillna('NB')
+df_x['BsmtFinType1']=df_x['BsmtFinType1'].fillna('NB')
+df_x['BsmtCond']=df_x['BsmtCond'].fillna('NB')
+df_x['BsmtQual']=df_x['BsmtQual'].fillna('NB')
+df_x['MasVnrType'] = df_x['MasVnrType'].fillna('none')
+df_x.Electrical = df_x.Electrical.fillna('SBrkr')
+df_x["LotAreaCut"] = pd.qcut(df_x.LotArea,10)
+df_x['LotFrontage']=df_x.groupby(['LotAreaCut','Neighborhood'])['LotFrontage'].transform(lambda x: x.fillna(x.median()))
+df_x['LotFrontage']=df_x.groupby(['LotAreaCut'])['LotFrontage'].transform(lambda x: x.fillna(x.median()))
+df_x.drop("LotAreaCut",axis=1,inplace=True)
 
 
+#all_columns = train.columns.values
+#non_categorical = ["LotFrontage", "LotArea", "MasVnrArea", "BsmtFinSF1",
+#                   "BsmtFinSF2", "BsmtUnfSF", "TotalBsmtSF", "1stFlrSF",
+#                   "2ndFlrSF", "LowQualFinSF", "GrLivArea", "GarageArea",
+#                   "WoodDeckSF", "OpenPorchSF", "EnclosedPorch", "3SsnPorch",
+#                   "ScreenPorch","PoolArea", "MiscVal"]
+#categorical = [value for value in all_columns if value not in non_categorical]
 
+# %%javascript
+# IPython.OutputArea.prototype._should_scroll = function(lines) {
+#     return false;
+# }
 
+#for c in non_categorical:
+#    plt.figure(figsize=(12,6))
+#    plt.scatter(x=train[c], y=train.SalePrice)
+#    plt.xlabel(c, fontsize=13)
+#    plt.ylabel("SalePrice", fontsize=13)
+    #plt.ylim(0,100)
 
-# Removie the outliers
-from sklearn.ensemble import IsolationForest
+#df_x.drop(train[(train["GrLivArea"]>4000)&(df_x["SalePrice"]<300000)].index,inplace=True)
+#df_x.isnull().sum()[df_x.isnull().sum()>0]
+#df_x["MasVnrArea"].fillna(0, inplace=True)
+#df_x.isnull().sum()[df_x.isnull().sum()>0]
+#df_x.columns
+#df_x.head(20)
 
-clf = IsolationForest(max_samples = 100, random_state = 42)
-clf.fit(train_numerical)
-y_noano = clf.predict(train_numerical)
-y_noano = pd.DataFrame(y_noano, columns = ['Top'])
-y_noano[y_noano['Top'] == 1].index.values
 
-train_numerical = train_numerical.iloc[y_noano[y_noano['Top'] == 1].index.values]
-train_numerical.reset_index(drop = True, inplace = True)
+df_x = pd.get_dummies(df_x)
+df_x = df_x.fillna(df_x.mean())
 
-train_categoric = train_categoric.iloc[y_noano[y_noano['Top'] == 1].index.values]
-train_categoric.reset_index(drop = True, inplace = True)
+#imp = SimpleImputer(missing_values=np.nan, strategy='most_frequent')
+#data = imp.fit_transform(data)
 
-train = train.iloc[y_noano[y_noano['Top'] == 1].index.values]
-train.reset_index(drop = True, inplace = True)
+#data
 
+# Log transformation
+#data = np.log(data)
+#labels = np.log(labels)
 
+# Change -inf to 0 again
+#data[data==-np.inf]=0
 
+mapper = DataFrameMapper([(df_x.columns, RobustScaler())])
+scaled_data = mapper.fit_transform(df_x.copy())
+scaled_data_df = pd.DataFrame(scaled_data, index=df_x.index, columns=df_x.columns)
 
+#scaler = StandardScaler()
+#scaler = RobustScaler()
+#data = scaler.fit_transform(scaled_features_df)
+pca = PCA()
+pca.fit(scaled_data)
+#np.cumsum(pca.explained_variance_ratio_)[:20]
 
+variance = 0.99
 
+nr_components=np.argmax(np.cumsum(pca.explained_variance_ratio_) >= variance)
+#nr_components
 
+pca = PCA(n_components=nr_components)
+dataPCA = pca.fit_transform(scaled_data)
 
+train_x = dataPCA[:train.shape[0], :]
+test_x = dataPCA[train.shape[0]:, :]
 
 
-col_train_num = list(train_numerical.columns)
-col_train_num_bis = list(train_numerical.columns)
 
-col_train_cat = list(train_categoric.columns)
 
-col_train_num_bis.remove('SalePrice')
 
-mat_train = np.matrix(train_numerical)
-mat_test  = np.matrix(test_numerical)
-mat_new = np.matrix(train_numerical.drop('SalePrice',axis = 1))
-mat_y = np.array(train.SalePrice)
 
-prepro_y = MinMaxScaler()
-prepro_y.fit(mat_y.reshape(1314,1))
 
-prepro = MinMaxScaler()
-prepro.fit(mat_train)
 
-prepro_test = MinMaxScaler()
-prepro_test.fit(mat_new)
 
-train_num_scale = pd.DataFrame(prepro.transform(mat_train),columns = col_train_num)
-test_num_scale  = pd.DataFrame(prepro_test.transform(mat_test),columns = col_train_num_bis)
 
 
 
 
 
 
+#df_train = pd.read_csv('../resources/train.csv', index_col=0)
 
+#total = df_train.isnull().sum().sort_values(ascending=False)
+#percent = (df_train.isnull().sum()/df_train.isnull().count()).sort_values(ascending=False)
+#missing_data = pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
 
+#df_train = df_train.fillna(df_train.mean())
 
+#standardizing data
+#saleprice_scaled = StandardScaler().fit_transform(train_y[np.newaxis])
 
 
-train[col_train_num] = pd.DataFrame(prepro.transform(mat_train),columns = col_train_num)
-test[col_train_num_bis]  = test_num_scale
+#bivariate analysis saleprice/grlivarea
+#var = 'GrLivArea'
+#data = pd.concat([train_y, train_x[var]], axis=1)
+#data.plot.scatter(x=var, y='SalePrice', ylim=(0,800000))
 
-# List of features
-COLUMNS = col_train_num
-FEATURES = col_train_num_bis
-LABEL = "SalePrice"
+#df_train = pd.read_csv('../resources/train.csv')
 
-FEATURES_CAT = col_train_cat
+#cols = ['SalePrice','OverallQual', 'GrLivArea', 'GarageCars', 'FullBath', 'YearBuilt']
+#df_train = df_train[cols]
+# Create dummy values
+#df_train = pd.get_dummies(df_train)
+#filling NA's with the mean of the column:
+#df_train = df_train.fillna(df_train.mean())
+# Always standard scale the data before using NN
+#scale = StandardScaler()
+#X_train = df_train[['OverallQual', 'GrLivArea', 'GarageCars', 'FullBath', 'YearBuilt']]
+#X_train = scale.fit_transform(X_train)
+# Y is just the 'SalePrice' column
+#y = df_train['SalePrice'].values
+seed = 7
+np.random.seed(seed)
+# split into 67% for train and 33% for test
+train_x, valid_x, train_y, valid_y = train_test_split(train_x, train_y, test_size=0.33, random_state=seed)
 
-engineered_features = []
+def create_model():
+    # create model
+    model = Sequential()
+    model.add(Dense(10, input_dim=train_x.shape[1], activation='relu'))
+    model.add(Dense(30, activation='relu'))
+    model.add(Dense(40, activation='relu'))
+    model.add(Dense(1))
+    # Compile model
+    model.compile(optimizer ='adam', loss = 'mean_squared_error', metrics =[metrics.mae])
+    return model
 
-for continuous_feature in FEATURES:
-    engineered_features.append(
-        tf.contrib.layers.real_valued_column(continuous_feature))
 
-for categorical_feature in FEATURES_CAT:
-    sparse_column = tf.contrib.layers.sparse_column_with_hash_bucket(
-        categorical_feature, hash_bucket_size=1000)
 
-    engineered_features.append(
-        tf.contrib.layers.embedding_column(sparse_id_column=sparse_column, dimension=16, combiner="sum"))
+model = create_model()
+model.summary()
 
-# Training set and Prediction set with the features to predict
-training_set = train[FEATURES + FEATURES_CAT]
-prediction_set = train.SalePrice
+history = model.fit(train_x, train_y, validation_data=(valid_x, valid_y), epochs=150, batch_size=32)
 
-# Train and Test
-x_train, x_test, y_train, y_test = train_test_split(training_set[FEATURES + FEATURES_CAT],
-                                                    prediction_set, test_size=0.33, random_state=42)
-y_train = pd.DataFrame(y_train, columns=[LABEL])
-training_set = pd.DataFrame(x_train, columns=FEATURES + FEATURES_CAT).merge(y_train, left_index=True, right_index=True)
-
-# Training for submission
-training_sub = training_set[FEATURES + FEATURES_CAT]
-testing_sub = test[FEATURES + FEATURES_CAT]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Same thing but for the test set
-y_test = pd.DataFrame(y_test, columns = [LABEL])
-testing_set = pd.DataFrame(x_test, columns = FEATURES + FEATURES_CAT).merge(y_test, left_index = True, right_index = True)
-
-training_set[FEATURES_CAT] = training_set[FEATURES_CAT].applymap(str)
-testing_set[FEATURES_CAT] = testing_set[FEATURES_CAT].applymap(str)
-
-
-def input_fn_new(data_set, training=True):
-    continuous_cols = {k: tf.constant(data_set[k].values) for k in FEATURES}
-
-    categorical_cols = {k: tf.SparseTensor(
-        indices=[[i, 0] for i in range(data_set[k].size)], values=data_set[k].values, dense_shape=[data_set[k].size, 1])
-    for k in FEATURES_CAT}
-
-    # Merges the two dictionaries into one.
-    feature_cols = dict(list(continuous_cols.items()) + list(categorical_cols.items()))
-
-    if training == True:
-        # Converts the label column into a constant Tensor.
-        label = tf.constant(data_set[LABEL].values)
-
-        # Returns the feature columns and the label.
-        return feature_cols, label
-
-    return feature_cols
-
-
-# Model
-regressor = tf.contrib.learn.DNNRegressor(feature_columns=engineered_features,
-                                          activation_fn=tf.nn.relu, hidden_units=[200, 100, 50, 25, 12])
-
-
-
-
-
-
-
-
-
-
-
-categorical_cols = {k: tf.SparseTensor(indices=[[i, 0] for i in range(training_set[k].size)], values = training_set[k].values, dense_shape = [training_set[k].size, 1]) for k in FEATURES_CAT}
-
-
-
-
-
-
-
-
-
-
-# Deep Neural Network Regressor with the training set which contain the data split by train test split
-regressor.fit(input_fn = lambda: input_fn_new(training_set) , steps=2000)
-
-
-
-
-
-
-
-
-ev = regressor.evaluate(input_fn=lambda: input_fn_new(testing_set, training = True), steps=1)
-
-
-
-
-
-
-
-
-
-
-
-
-loss_score4 = ev["loss"]
-print("Final Loss on the testing set: {0:f}".format(loss_score4))
-
-
-
-
-
-
-
-
-
-
-
-# Predictions
-y = regressor.predict(input_fn=lambda: input_fn_new(testing_set))
-predictions = list(itertools.islice(y, testing_set.shape[0]))
-predictions = pd.DataFrame(prepro_y.inverse_transform(np.array(predictions).reshape(434,1)))
-
-
-
-
-
-
-
-
-
-
-
-
-
-matplotlib.rc('xtick', labelsize=30)
-matplotlib.rc('ytick', labelsize=30)
-
-fig, ax = plt.subplots(figsize=(50, 40))
-
-# plt.style.use('ggplot')
-# plt.plot(predictions.values, reality.values, 'ro')
-# plt.xlabel('Predictions', fontsize = 30)
-# plt.ylabel('Reality', fontsize = 30)
-# plt.title('Predictions x Reality on dataset Test', fontsize = 30)
-# ax.plot([reality.min(), reality.max()], [reality.min(), reality.max()], 'k--', lw=4)
+#
+# # summarize history for accuracy
+# plt.plot(history.history['mean_absolute_error'])
+# plt.plot(history.history['val_mean_absolute_error'])
+# plt.title('model accuracy')
+# plt.ylabel('accuracy')
+# plt.xlabel('epoch')
+# plt.legend(['train', 'test'], loc='upper left')
 # plt.show()
+# # summarize history for loss
+# plt.plot(history.history['loss'])
+# plt.plot(history.history['val_loss'])
+# plt.title('model loss')
+# plt.ylabel('loss')
+# plt.xlabel('epoch')
+# plt.legend(['train', 'test'], loc='upper left')
+# plt.show()
+#
+#
+# df_test = pd.read_csv('../resources/test.csv')
+# cols = ['OverallQual', 'GrLivArea', 'GarageCars', 'FullBath', 'YearBuilt']
+# df_test['GrLivArea'] = np.log1p(df_test['GrLivArea'])
+# df_test = pd.get_dummies(df_test)
+# df_test = df_test.fillna(df_test.mean())
+# X_test = df_test[cols].values
+# # Always standard scale the data before using NN
+# scale = StandardScaler()
+# X_test = scale.fit_transform(X_test)
+
+prediction = model.predict(test_x)
 
 
 
+submission = pd.DataFrame()
+submission['Id'] = test_id_col
+submission['SalePrice'] = prediction
 
-
-
-
-
-
-
-
-
-
-y_predict = regressor.predict(input_fn=lambda: input_fn_new(testing_sub, training = False))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#to_submit(y_predict, "submission_cont_categ")
-
-
-
-
-
-
-
-
+submission.to_csv('submission.csv', index=False)

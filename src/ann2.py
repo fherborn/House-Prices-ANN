@@ -43,13 +43,7 @@ for row in numerical:
     df_x[row[0]] = df_x.loc[:, row[0]].replace(row[1], list(range(0, len(row[1]))))
 
 
-#Fill missing values with column mean
-#TODO later? after categorical
-df_x = df_x.fillna(df_x.median())
 
-#Remove columns with all the same value
-#TODO later? after categorical
-df_x = df_x.drop(df_x.std()[(df_x.std() == 0)].index, axis=1)
 
 
 #Encode labels
@@ -84,17 +78,29 @@ categorical = [
 
 labelEncoder = LabelEncoder()
 
-for val in categorical:
-    df_x[val] = labelEncoder.fit_transform(df_x[val])
+#for val in categorical:
+#    df_x[val] = labelEncoder.fit_transform(df_x[val])
     #df_x = OneHotEncoder(categorical_features=val).fit_transform(df_x).toArray()
 
+#TODO remove
+df_x = df_x.drop(categorical, axis=1)
+#TODO remove end
+
 #Create dummies
-df_x = pd.get_dummies(df_x, columns=categorical, drop_first=True)
+#df_x = pd.get_dummies(df_x, columns=categorical, drop_first=True)
 
 #TODO Outliars eliminieren
 
 #Remove columns with more than 60% missing value,
 df_x = df_x.dropna(axis='columns', how='any', thresh=df_x.shape[0]*0.6, subset=None, inplace=False)
+
+#Fill missing values with column mean
+#TODO later? after categorical
+df_x = df_x.fillna(df_x.median())
+
+#Remove columns with all the same value
+#TODO later? after categorical
+df_x = df_x.drop(df_x.std()[(df_x.std() == 0)].index, axis=1)
 
 # Splitting the dataset into the Training set and Test set
 from sklearn.model_selection import train_test_split
@@ -111,13 +117,14 @@ test_x = df_x[test_x.shape[0]:].values
 from sklearn.preprocessing import StandardScaler
 
 from sklearn.preprocessing import MinMaxScaler
-#sc = StandardScaler()
-sc = MinMaxScaler()
+sc = StandardScaler()
+#sc = MinMaxScaler()
 train_x = sc.fit_transform(train_x)
 test_x = sc.fit_transform(test_x)
 #valid_x = sc.transform(valid_x)
 
 
+from keras.wrappers.scikit_learn import KerasClassifier
 from keras.wrappers.scikit_learn import KerasRegressor
 from sklearn.model_selection import cross_val_score
 from keras.models import Sequential
@@ -132,13 +139,15 @@ np.random.seed(seed)
 # TODO check wieviele units per layer und welche Aktivierungsfunktion
 def build_classifier():
     c = Sequential()
-    c.add(Dense(units=200, kernel_initializer='normal', activation='relu', input_dim=train_x.shape[1]))
-    c.add(Dense(units=100, kernel_initializer='normal', activation='relu'))
-    c.add(Dense(units=50, kernel_initializer='normal', activation='relu'))
-    c.add(Dense(units=25, kernel_initializer='normal', activation='relu'))
-    c.add(Dense(units=1, kernel_initializer='normal', activation='relu'))
+    c.add(Dense(units=10, kernel_initializer='normal', activation='relu', input_dim=train_x.shape[1]))
+    c.add(Dense(units=30, kernel_initializer='normal', activation='relu'))
+    c.add(Dense(units=40, kernel_initializer='normal', activation='relu'))
+    c.add(Dense(units=1))
     c.compile(loss='mean_squared_error', optimizer='adam', metrics =[metrics.mae])
+    print(c.summary())
     return c
+
+
 
 #classifier = build_classifier()
 #classifier.fit(np.array(train_x), np.array(train_y), batch_size=25, epochs=300)
@@ -152,11 +161,12 @@ def build_classifier():
 
 from sklearn.model_selection import KFold
 
-model = KerasRegressor(build_fn=build_classifier, batch_size=10, epochs=200)
-model.fit(train_x, train_y)
+#model = KerasRegressor(build_fn=build_classifier, batch_size=10, epochs=200)
+model = build_classifier()
+model.fit(train_x, train_y, batch_size=20, epochs=200)
 #classifier.fit(train_x, train_y)
-kfold = KFold(n_splits=10, random_state=seed)
-#accuracies = cross_val_score(estimator=classifier, X=train_x, y=train_y, cv=kfold, n_jobs=-1)
+#kfold = KFold(n_splits=10, random_state=seed)
+#accuracies = cross_val_score(estimator=model, X=train_x, y=train_y, cv=kfold, n_jobs=-1)
 pred_y = model.predict(test_x)
 #from sklearn.metrics import confusion_matrix
 #cm = confusion_matrix(valid_y, pred_y)
