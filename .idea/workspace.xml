@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a469974b-38bf-42e6-a1ec-0e23de29ebef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/annneu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ann.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ann.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ann2.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ann2.py" afterDir="false" />
-    </list>
+    <list default="true" id="a469974b-38bf-42e6-a1ec-0e23de29ebef" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,13 +16,24 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/annneu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="170" column="8" lean-forward="true" selection-start-line="170" selection-start-column="8" selection-end-line="170" selection-end-column="8" />
+            <state relative-caret-position="393">
+              <caret line="161" column="6" selection-start-line="161" selection-start-column="6" selection-end-line="161" selection-end-column="6" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/submission.csv">
+          <provider selected="true" editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" rowLines="3">
+              <column index="0" width="100" />
+              <column index="1" width="100" />
+            </state>
+          </provider>
+          <provider editor-type-id="csv-text-editor" />
         </entry>
       </file>
     </leaf>
@@ -66,9 +72,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="x" value="847" />
-    <option name="width" value="833" />
-    <option name="height" value="1050" />
+    <option name="width" value="954" />
+    <option name="height" value="1200" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -273,12 +278,12 @@
       <workItem from="1547575920957" duration="7456000" />
       <workItem from="1547739805960" duration="1743000" />
       <workItem from="1547924705380" duration="10359000" />
-      <workItem from="1547988693059" duration="29090000" />
+      <workItem from="1547988693059" duration="29367000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55070000" />
+    <option name="totallyTimeSpent" value="55347000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -290,9 +295,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1289" height="1200" extended-state="6" />
+    <frame x="0" y="0" width="954" height="1200" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34723336" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.4747807" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -306,12 +311,12 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5005325" side_tool="true" weight="0.4" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32919708" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" sideWeight="0.49946752" visible="true" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3283186" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49946752" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.27826783" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.51724136" />
       <window_info anchor="right" id="R Graphics" order="4" />
       <window_info anchor="right" id="R Packages" order="5" />
       <window_info anchor="right" x="0" y="0" width="810" height="1240" id="Documentation" order="6" side_tool="true" weight="0.32989994" />
@@ -565,10 +570,19 @@
       </provider>
       <provider editor-type-id="csv-text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/sample_submission.csv">
+      <provider selected="true" editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3">
+          <column index="0" width="100" />
+          <column index="1" width="100" />
+        </state>
+      </provider>
+      <provider editor-type-id="csv-text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/annneu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="170" column="8" lean-forward="true" selection-start-line="170" selection-start-column="8" selection-end-line="170" selection-end-column="8" />
+        <state relative-caret-position="393">
+          <caret line="161" column="6" selection-start-line="161" selection-start-column="6" selection-end-line="161" selection-end-column="6" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

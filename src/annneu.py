@@ -1,40 +1,14 @@
-import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
-from sklearn.preprocessing import StandardScaler # Used for scaling of data
+
 from sklearn.model_selection import train_test_split
 from keras.models import Sequential
-from keras.layers import Dense, Dropout
+from keras.layers import Dense
 from keras import metrics
-import matplotlib.pyplot as plt
-from keras import backend as K
-from keras.wrappers.scikit_learn import KerasRegressor
-
-import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
-from sklearn.preprocessing import StandardScaler # Used for scaling of data
-from sklearn.model_selection import train_test_split
-from keras.models import Sequential
-from keras.layers import Dense, Dropout
-from keras import metrics
-import matplotlib.pyplot as plt
-from keras import backend as K
-from keras.wrappers.scikit_learn import KerasRegressor
-import os
-
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import RobustScaler
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-from sklearn_pandas import DataFrameMapper
 import os
 
 
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.preprocessing import LabelEncoder
 
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
