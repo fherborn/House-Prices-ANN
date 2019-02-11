@@ -7,8 +7,8 @@
 # from sklearn.decomposition import PCA
 # from sklearn_pandas import DataFrameMapper
 #
-# train = pd.read_csv('../resources/train.csv')
-# #test = pd.read_csv('../resources/test.csv')
+# train = pd.read_csv('../input/train.csv')
+# #test = pd.read_csv('../input/test.csv')
 #
 #
 #
@@ -109,8 +109,14 @@
 # #scaler = StandardScaler()
 # #scaler = RobustScaler()
 # #data = scaler.fit_transform(scaled_features_df)
-# pca = PCA()
-# pca.fit(data)
+
+from sklearn.decomposition import PCA
+pca = PCA()
+
+pca.components_
+
+#pca.fit(data)
+
 # np.cumsum(pca.explained_variance_ratio_)[:20]
 #
 # variance = 0.99
@@ -188,8 +194,8 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 
 # # Importing the dataset
-train = pd.read_csv('../resources/train.csv')
-#test = pd.read_csv('../resources/test.csv')
+train = pd.read_csv('../input/train.csv')
+#test = pd.read_csv('../input/test.csv')
 
 #dataset = pd.concat([train, test])
 df_x = train.iloc[:, :-1]
@@ -341,3 +347,4 @@ variance = accuracies.std()
 # grid_search = grid_search.fit(X_train, y_train)
 # best_parameters = grid_search.best_params_
 # best_accuracy = grid_search.best_score_
+

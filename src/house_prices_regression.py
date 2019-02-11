@@ -12,9 +12,9 @@ os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import ThresholdedReLU
+from keras.wrappers.scikit_learn import KerasRegressor
 from keras import metrics
 from sklearn.decomposition import PCA
-
 # Importing the dataset
 train = pd.read_csv('../input/train.csv')
 test_x = pd.read_csv('../input/test.csv')

@@ -175,8 +175,6 @@ train_prepared_x = df_x[:train.shape[0]]
 test_prepared_x = df_x[train.shape[0]:]
 
 
-
-
 pca = PCA()
 pca.fit(train_prepared_x, train_y)
 
@@ -197,9 +195,6 @@ pca.fit(train_prepared_x, train_y)
 
 ann_train_x = pca.transform(train_prepared_x)
 ann_test_x = pca.transform(test_prepared_x)
-
-#ann_train_x = train_prepared_x
-#ann_test_x = test_prepared_x
 
 # Create correlation matrix
 #corr_data = train_prepared_x
@@ -245,29 +240,15 @@ hidden_layer_nodes = int(ann_train_x.shape[0]/(1*(input_layer_nodes + output_lay
 
 def create_model():
     m = Sequential()
-    m.add(Dense(100, input_dim=input_layer_nodes, activation='relu'))
-    m.add(Dense(50, activation='relu'))
-    #m.add(Dense(hidden_layer_nodes, input_dim=input_layer_nodes, activation=LeakyReLU(alpha=0.1)))
+    m.add(Dense(hidden_layer_nodes, input_dim=input_layer_nodes, activation=LeakyReLU(alpha=0.1)))
+    m.add(Dense(hidden_layer_nodes, input_dim=input_layer_nodes, activation=LeakyReLU(alpha=0.1)))
     m.add(Dense(output_layer_nodes))
-    m.compile(optimizer=keras.optimizers.Adadelta(), loss = 'mean_squared_error', metrics=[metrics.mse])
+    m.compile(optimizer=keras.optimizers.Adadelta(), loss = 'mean_squared_error', metrics=['accuracy', metrics.msle, metrics.mae, metrics.mse])
     return m
 
-#import random
-#from sklearn.ensemble import RandomForestRegressor
-#parameters = dict(bootstrap= True,
-#              min_samples_leaf= 3,
-#              n_estimators=  10,
-#              min_samples_split= 10,
-#              max_features= 'auto',
-#              max_depth= 30,
-#              max_leaf_nodes= None)
-#
-#random.seed(42)
-#rf = RandomForestRegressor(**parameters)
-#rf.fit(train_prepared_x, train_y)
 
 model = create_model()
-model.summary()
+# model.summary()
 
 #from sklearn.model_selection import GridSearchCV
 
@@ -280,7 +261,7 @@ model.summary()
 
 #print('Best Params: ', best_parameters)
 
-history = model.fit(ann_train_x, train_y, epochs=100, batch_size=32)
+history = model.fit(ann_train_x, train_y, epochs=150, batch_size=32)
 
 
 #pred_df = pd.DataFrame()
@@ -297,6 +278,7 @@ submission = pd.DataFrame()
 submission['Id'] = test_id_col
 submission['SalePrice'] = prediction
 submission.to_csv('submission.csv', index=False)
+
 
 
 target_submission = pd.read_csv('../input/good_submission.csv')

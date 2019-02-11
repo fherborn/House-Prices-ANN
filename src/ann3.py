@@ -245,7 +245,7 @@ hidden_layer_nodes = int(ann_train_x.shape[0]/(1*(input_layer_nodes + output_lay
 
 def create_model():
     m = Sequential()
-    m.add(Dense(100, input_dim=input_layer_nodes, activation='relu'))
+    m.add(Dense(50, input_dim=input_layer_nodes, activation='relu'))
     m.add(Dense(50, activation='relu'))
     #m.add(Dense(hidden_layer_nodes, input_dim=input_layer_nodes, activation=LeakyReLU(alpha=0.1)))
     m.add(Dense(output_layer_nodes))
