@@ -280,7 +280,7 @@ model.summary()
 
 #print('Best Params: ', best_parameters)
 
-history = model.fit(ann_train_x, train_y, epochs=100, batch_size=32)
+history = model.fit(ann_train_x, train_y, epochs=150, batch_size=10)
 
 
 #pred_df = pd.DataFrame()

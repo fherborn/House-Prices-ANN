@@ -245,8 +245,8 @@ hidden_layer_nodes = int(ann_train_x.shape[0]/(1*(input_layer_nodes + output_lay
 
 def create_model():
     m = Sequential()
-    m.add(Dense(100, input_dim=input_layer_nodes, activation='relu'))
-    m.add(Dense(50, activation='relu'))
+    m.add(Dense(int(input_layer_nodes/2), input_dim=input_layer_nodes, activation='relu'))
+    m.add(Dense(int(input_layer_nodes/4), activation=ThresholdedReLU(theta=1.0)))
     #m.add(Dense(hidden_layer_nodes, input_dim=input_layer_nodes, activation=LeakyReLU(alpha=0.1)))
     m.add(Dense(output_layer_nodes))
     m.compile(optimizer=keras.optimizers.Adadelta(), loss = 'mean_squared_error', metrics=[metrics.mse])
@@ -280,7 +280,7 @@ model.summary()
 
 #print('Best Params: ', best_parameters)
 
-history = model.fit(ann_train_x, train_y, epochs=100, batch_size=32)
+history = model.fit(ann_train_x, train_y, epochs=125, batch_size=10)
 
 
 #pred_df = pd.DataFrame()
